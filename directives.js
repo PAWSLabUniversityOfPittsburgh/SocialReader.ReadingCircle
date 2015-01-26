@@ -4,6 +4,7 @@
     var parentModule = (typeof window.parentModule === 'undefined') ? "" : window.parentModule;
     var componentPath = (typeof window.componentPath === 'undefined') ? "" : window.componentPath;
 
+    var directivesModule = angular.module(parentModule);
     directivesModule.directive('itemListNormal', itemListNormal);
 
     itemListNormal.$inject = [];
