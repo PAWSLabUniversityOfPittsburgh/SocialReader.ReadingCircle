@@ -8,13 +8,15 @@
     itemListNormal.$inject = [];
 
     function itemListNormal() {
+        var componentPath = (typeof componentPath === 'undefined') ? "" : componentPath;
+
         var directive = {
             link: link,
             scope: {},
             controller: controller,
             controllerAs: 'vm',
             require: ['^itemManager', 'itemListNormal'],
-            templateUrl: 'itemManager/itemListNormal/template.html',
+            templateUrl: componentPath + 'SocialReader.Reader/template.html',
             restrict: 'A'
         };
         
