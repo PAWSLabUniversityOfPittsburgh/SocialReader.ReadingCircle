@@ -8,7 +8,7 @@
     itemListNormal.$inject = [];
 
     function itemListNormal() {
-        var componentPath = (typeof componentPath === 'undefined') ? "" : componentPath;
+        var componentPath = (typeof window.componentPath === 'undefined') ? "" : window.componentPath;
 
         var directive = {
             link: link,
