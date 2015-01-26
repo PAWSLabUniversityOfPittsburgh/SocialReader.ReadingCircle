@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     
-    var directivesModule = angular.module('itemManager');
+    var directivesModule = angular.module(window.parentModule);
 
     directivesModule.directive('itemListNormal', itemListNormal);
 
