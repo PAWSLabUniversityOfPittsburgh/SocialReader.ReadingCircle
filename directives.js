@@ -16,7 +16,7 @@
             controller: controller,
             controllerAs: 'vm',
             require: ['^itemManager', 'itemListNormal'],
-            templateUrl: componentPath + 'SocialReader.Reader/template.html',
+            templateUrl: componentPath + 'SocialReader.ReadingCircle/template.html',
             restrict: 'A'
         };
         
