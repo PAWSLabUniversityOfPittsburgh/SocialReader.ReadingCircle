@@ -1,7 +1,8 @@
 (function () {
     'use strict';
     
-    var directivesModule = angular.module(window.parentModule);
+    var parentModule = (typeof window.parentModule === 'undefined') ? "" : window.parentModule;
+    var componentPath = (typeof window.componentPath === 'undefined') ? "" : window.componentPath;
 
     directivesModule.directive('itemListNormal', itemListNormal);
 
@@ -15,7 +16,7 @@
             scope: {},
             controller: controller,
             controllerAs: 'vm',
-            require: ['^itemManager', 'itemListNormal'],
+            require: ['^'+parentModule, 'itemEditor'],
             templateUrl: componentPath + 'SocialReader.ReadingCircle/template.html',
             restrict: 'A'
         };
@@ -23,10 +24,10 @@
         return directive;
 
         function link(scope, element, attrs, controllers) {
-            var itemManagerController = controllers[0];
+            var managerController = controllers[0];
             var itemListNormalController = controllers[1];
             
-            itemListNormalController.itemManager = itemManagerController;
+            itemListNormalController.manager = managerController;
             
             itemListNormalController.initialize();
         }
@@ -36,7 +37,7 @@
             var vm = this;
             
             // Properties
-            vm.itemManager = {};
+            vm.manager = {};
             vm.items = [{ id: 1, name: "Glass", size: "Small" },
                         { id: 2, name: "Book", size: "Medium" },
                         { id: 3, name: "Box", size: "Large" }];
@@ -48,7 +49,7 @@
             
             // Functions
             function initialize() {
-                vm.itemManager.respondToUpdatesWith(modifyItem);
+                vm.manager.respondToUpdatesWith(modifyItem);
             }
             
             function modifyItem(item) {
@@ -63,7 +64,7 @@
             }
             
             function editItem(item) {
-                vm.itemManager.editItem(item);
+                vm.manager.editItem(item);
             }
         }
     }
