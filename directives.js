@@ -17,7 +17,7 @@
             scope: {},
             controller: controller,
             controllerAs: 'vm',
-            require: ['^'+parentModule, 'itemEditor'],
+            require: ['^'+parentModule, 'itemListNormal'],
             templateUrl: componentPath + 'SocialReader.ReadingCircle/template.html',
             restrict: 'A'
         };
