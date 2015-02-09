@@ -5,11 +5,11 @@
     var componentPath = (typeof window.componentPath === 'undefined') ? "" : window.componentPath;
 
     var directivesModule = angular.module(parentModule);
-    directivesModule.directive('readingCircle', readingCircle);
+    directivesModule.directive('itemListNormal', itemListNormal);
 
-    readingCircle.$inject = [];
+    itemListNormal.$inject = [];
 
-    function readingCircle() {
+    function itemListNormal() {
         var componentPath = (typeof window.componentPath === 'undefined') ? "" : window.componentPath;
 
         var directive = {
@@ -17,7 +17,7 @@
             scope: {},
             controller: controller,
             controllerAs: 'vm',
-            require: ['^'+parentModule, 'readingCircle'],
+            require: ['^'+parentModule, 'itemListNormal'],
             templateUrl: componentPath + 'SocialReader.ReadingCircle/template.html',
             restrict: 'A'
         };
@@ -26,11 +26,11 @@
 
         function link(scope, element, attrs, controllers) {
             var managerController = controllers[0];
-            var readingCircleController = controllers[1];
+            var itemListNormalController = controllers[1];
             
-            readingCircleController.manager = managerController;
+            itemListNormalController.manager = managerController;
             
-            readingCircleController.initialize();
+            itemListNormalController.initialize();
         }
         
         function controller($scope) {
