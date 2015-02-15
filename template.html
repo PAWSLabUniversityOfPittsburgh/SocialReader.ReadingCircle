@@ -1,10 +1,25 @@
-<div class="col-md-4">
-    <h5>Reading Circle</h5>
-
-    <ul class="items-list list-unstyled">
-        <li data-ng-repeat="item in vm.items">
-            <span>{{item.name}} - {{item.size}}</span>
-            <a href="" class="fa fa-pencil-square-o" data-ng-click="vm.editItem(item)"></a>
-        </li>
-    </ul>
+<!-- here the sunburst will be loaded-->
+<div id="chartOut" class="col-md-4">
+    <span id="tip" style="position: absolute; left: 0; top: 0; width:448px; border-bottom: 1px solid #cccccc;"></span>
+    <div id="detail">
+    	<label for="shade"><button style="font-size:11px; width:90px; height:15px; padding-top:2px;line-height:10px;" id="shadeInputLabel" onclick="unShadeAll();">Unshade All</button></label>
+        <label for="detail">Levels&nbsp;
+            <input type="range" value="3" max="4" min="1" name="detail" id="chart-detail"
+                onchange="updateChartDetail(this.value)">
+        </label>
+    </div>
+    <div id="chart"></div>
+    <!-- <div id="progress-bar" class="progress progress-striped active">
+        <div class="bar" style="background-color: <?php echo $config_colors[0];?>; width: 10%">0%</div>
+        <div class="bar" style="background-color: <?php echo $config_colors[1];?>; width: 10%"></div>
+        <div class="bar" style="background-color: <?php echo $config_colors[2];?>; width: 10%"></div>
+        <div class="bar" style="background-color: <?php echo $config_colors[3];?>; width: 10%"></div>
+        <div class="bar" style="background-color: <?php echo $config_colors[4];?>; width: 10%">Reading</div>
+        <div class="bar" style="background-color: <?php echo $config_colors[5];?>; width: 10%">Progress</div>
+        <div class="bar" style="background-color: <?php echo $config_colors[6];?>; width: 10%"></div>
+        <div class="bar" style="background-color: <?php echo $config_colors[7];?>; width: 10%"></div>
+        <div class="bar" style="background-color: <?php echo $config_colors[8];?>; width: 10%"></div>
+        <div class="bar" style="background-color: <?php echo $config_colors[9];?>; width: 10%">100%</div>
+        
+    </div> -->
 </div>
