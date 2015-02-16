@@ -518,10 +518,10 @@
                 }
                 
                 $("#chart-detail").val(storedValue);
-                updateChartDetail(storedValue);
+                $scope.updateChartDetail(storedValue);
             }
 
-            function updateChartDetail(val){
+            $scope.updateChartDetail = function(val){
                 $("[class^=partition_depth_]").show();
                 $("[class^=partition_depth_0]").hide();
 
@@ -532,7 +532,7 @@
                 localStorage.setItem("chart-detail", val);
             }
             
-            function unShadeAll(){
+            $scope.unShadeAll = function(){
                 
                 unsetHighlight();
             }

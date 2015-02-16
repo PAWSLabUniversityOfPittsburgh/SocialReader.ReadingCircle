@@ -1,11 +1,11 @@
 <!-- here the sunburst will be loaded-->
 <div id="chartOut" class="col-md-4">
-    <span id="tip" style="position: absolute; left: 0; top: 0; width:448px; border-bottom: 1px solid #cccccc;"></span>
+    <span id="tip"></span>
     <div id="detail">
-    	<label for="shade"><button style="font-size:11px; width:90px; height:15px; padding-top:2px;line-height:10px;" id="shadeInputLabel" onclick="unShadeAll();">Unshade All</button></label>
+    	<label for="shade"><button id="shadeInputLabel" ng-click="unShadeAll();">Unshade All</button></label>
         <label for="detail">Levels&nbsp;
-            <input type="range" value="3" max="4" min="1" name="detail" id="chart-detail"
-                onchange="updateChartDetail(this.value)">
+            <input type="range" value="3" max="4" min="1" ng-model="detail" id="chart-detail"
+            ng-change="updateChartDetail(this.value)">
         </label>
     </div>
     <div id="chart"></div>
