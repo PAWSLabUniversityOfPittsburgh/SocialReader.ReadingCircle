@@ -517,24 +517,23 @@
                     storedValue = 3;
                 }
                 
-                $("#chart-detail").val(storedValue);
-                $scope.updateChartDetail(storedValue);
+                $scope.detail = storedValue;
+                $scope.updateChartDetail();
             }
 
-            $scope.updateChartDetail = function(val){
+            $scope.updateChartDetail = function(){
                 $("[class^=partition_depth_]").show();
                 $("[class^=partition_depth_0]").hide();
 
-                for(var i = 4; i > val; i--){
+                for(var i = 4; i > $scope.detail; i--){
                     $(".partition_depth_"+i).hide();
                 }
 
-                localStorage.setItem("chart-detail", val);
+                localStorage.setItem("chart-detail", $scope.detail);
             }
             
-            $scope.unShadeAll = function(){
-                
-                unsetHighlight();
+            $scope.unShadeAll = function(){    
+                d3.selectAll("path").style("opacity", 1);
             }
             
             function modifyItem(item) {
