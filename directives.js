@@ -50,18 +50,19 @@
             var colors = ["#d73027","#f46d43","#fdae61","#fee08b","#ffffbf","#ffffbf","#d9ef8b","#a6d96a","#66bd63","#1a9850"];
             
             var json_file = componentPath + "data/isd.json";
-            var usr = "gat23";
-            var grp = "ISD2014Spring";
+            var usr = null;
+            var grp = null;
             var sid = "7FC4B";
             var course = "isd";
             var dbase = "kseahci";
             var currentDocno = "lamming-0231";
-            
-            var progress_url = "http://localhost/" + "?usr="+usr+"&grp="+grp+"&sid="+sid+"&mode=all"
+            var progress_url = null;
 
             // Functions
             function initialize() {
-                vm.manager.respondToUpdatesWith(modifyItem);
+                usr = vm.manager.getUser();
+                grp = vm.manager.getGroup();
+                progress_url = "http://localhost/" + "?usr="+usr+"&grp="+grp+"&sid="+sid+"&mode=all";
 
                 $(document).ready(function () {
                     
