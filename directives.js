@@ -42,8 +42,9 @@
 
             // Methods
             vm.initialize = initialize;
-            vm.modifyItem = modifyItem;
-            vm.editItem = editItem;
+            // vm.modifyItem = modifyItem;
+            // vm.editItem = editItem;
+            vm.manager.srRCSetLevelDisplayed = srRCSetLevelDisplayed;
 
             //Initializations
             var reader_url = "http://localhost/";
@@ -519,10 +520,21 @@
                 }
                 
                 $scope.detail = storedValue;
-                $scope.updateChartDetail();
+                
+                setTimeout(function() {
+                    $scope.updateChartDetail();
+                });
+                
             }
 
             $scope.updateChartDetail = function(){
+                 srRCSetLevelDisplayed($scope.detail)
+            }
+
+            function srRCSetLevelDisplayed(level) {
+                $scope.detail = level;
+                $("#chart-detail").val(level);
+
                 $("[class^=partition_depth_]").show();
                 $("[class^=partition_depth_0]").hide();
 
@@ -537,20 +549,20 @@
                 d3.selectAll("path").style("opacity", 1);
             }
             
-            function modifyItem(item) {
-                var x;
-                for (x = 0; x < vm.items.length; x += 1) {
-                    if (vm.items[x].id === item.id) {
-                        vm.items[x].name = item.name;
-                        vm.items[x].size = item.size;
-                        return;
-                    }
-                }
-            }
+            // function modifyItem(item) {
+            //     var x;
+            //     for (x = 0; x < vm.items.length; x += 1) {
+            //         if (vm.items[x].id === item.id) {
+            //             vm.items[x].name = item.name;
+            //             vm.items[x].size = item.size;
+            //             return;
+            //         }
+            //     }
+            // }
             
-            function editItem(item) {
-                vm.manager.editItem(item);
-            }
+            // function editItem(item) {
+            //     vm.manager.editItem(item);
+            // }
         }
     }
 
