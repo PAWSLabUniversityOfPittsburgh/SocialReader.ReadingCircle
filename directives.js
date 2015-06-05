@@ -13,13 +13,15 @@
     function readingCircle() {
 
         var directive = {
+            restrict: 'A',
             link: link,
-            scope: {},
+            scope: {
+                key: "=key"
+            },
             controller: controller,
             controllerAs: 'vm',
             require: ['^'+parentModule, 'readingCircle'],
-            templateUrl: componentPath + 'template.html',
-            restrict: 'A'
+            templateUrl: componentPath + 'template.html'
         };
         
         return directive;
@@ -61,6 +63,7 @@
 
             // Functions
             function initialize() {
+                console.log("Initializing reading circle - " + $scope.key);
                 usr = vm.manager.getUser();
                 grp = vm.manager.getGroup();
                 progress_url = "http://localhost/" + "?usr="+usr+"&grp="+grp+"&sid="+sid+"&mode=all";
