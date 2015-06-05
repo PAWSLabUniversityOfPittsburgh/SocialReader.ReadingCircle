@@ -160,15 +160,13 @@
                         return d.x;
                     })
                     .endAngle(function (d) {
-                        return (d.x + d.dx);
+                        return d.x + d.dx;
                     })
                     .innerRadius(function (d) {
                         return Math.sqrt(d.y);
-                        // return (d.y) / 200;
                     })
                     .outerRadius(function (d) {
                         return Math.sqrt(d.y + d.dy);
-                        // return ((d.y + d.dy) / 200); 
                     });
                 // @@@@
                 d3.json(json_file, function (error, json1) {
@@ -231,28 +229,13 @@
                             return "rotate(" + (d.x + d.dx / 2 - Math.PI / 2) / Math.PI * 180 + ")";
                         })
                         .attr("x", function (d) {
-                            return d.y / 200 - 12;
+                            return Math.sqrt(d.y);
                         })
                         .attr("dx", "+2")// margin
                         .attr("dy", ".35em")// vertical-align
                         .style("font-size", "70%")
                         .text(function (d) {
                             return (d.type == "lecture" ? d.name : ''); // @@@@
-                        });
-
-
-                    g.append("svg:text")
-                        .attr("transform", function (d) {
-                            return "rotate(" + (d.x + d.dx / 2 - Math.PI / 2) / Math.PI * 180 + ")";
-                        })
-                        .attr("x", function (d) {
-                            return d.y / 200 + 10*d.depth;
-                        })
-                        .attr("dx", "+2")// margin
-                        .attr("dy", ".35em")// vertical-align
-                        .style("font-size", "70%")
-                        .text(function (d) {
-                            return (d.active == true ? "x" : ''); // @@@@
                         });
 
                     function click(d) {
