@@ -1,14 +1,14 @@
 <!-- here the sunburst will be loaded-->
 <div id="chartOut" class="col-md-4">
-    <span id="tip"></span>
-    <div id="detail">
-    	<label for="shade"><button id="shadeInputLabel" ng-click="unShadeAll();">Unshade All</button></label>
-        <label for="detail">Levels&nbsp;
-            <input type="range" max="4" min="1" ng-model="detail" id="chart-detail"
+    <span id="tip-{{key}}"></span>
+    <div id="detail-{{key}}">
+    	<label for="shade"><button id="shadeInputLabel-{{key}}" ng-click="unShadeAll();">Unshade All</button></label>
+        <label for="detail-{{key}}">Levels&nbsp;
+            <input type="range" max="4" min="1" ng-model="detail" id="chart-detail-{{key}}"
             ng-change="updateChartDetail()">
         </label>
     </div>
-    <div id="chart"></div>
+    <div id="chart-{{key}}"></div>
     <!-- <div id="progress-bar" class="progress progress-striped active">
         <div class="bar" style="background-color: <?php echo $config_colors[0];?>; width: 10%">0%</div>
         <div class="bar" style="background-color: <?php echo $config_colors[1];?>; width: 10%"></div>

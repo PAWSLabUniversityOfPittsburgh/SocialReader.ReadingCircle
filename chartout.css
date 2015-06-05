@@ -1,12 +1,12 @@
 
-#chartOut{
+div[id^='chartout']{
     width: 450px;
     background-color: #f7fff7;
     height: 480px;
     padding-top: 40px;
 }
 
-#chart{
+div[id^='chart']{
     padding: 0;
     margin: 0;
     width: 436px;
@@ -20,25 +20,30 @@
     margin-left: 20px;
 }*/
 
-#chart-detail {
+input[id^='chart-detail']{
     width:75px;
 }
 
-#chartOut #tip, #chartOut label {
+span[id^='tip'], label {
     font-size: 10px;
 }
 
-#chartOut #tip {
+span[id^='tip'] {
     position: absolute;
     top: -30px;
 }
 
-#chartOut #detail{
+div[id^='detail']{
     position: absolute;
     right: 10px;
+    display:none;
 }
 
-#chartOut #shadeInputLabel{
+div[id^='detail-main']{
+    display:block!important;
+}
+
+button[id^='shadeInputLabel']{
     top: -30px;
     position: absolute;
     left: 1px;
@@ -73,11 +78,11 @@
     vertical-align: middle;
 }*/
 
-#chart2{
+/*#chart2{
     margin: 0;
     width: 440px;
     background-color: #f7fff7;
-}
+}*/
 
 /*
 #choose{

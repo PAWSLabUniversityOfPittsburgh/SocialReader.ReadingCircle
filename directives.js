@@ -21,9 +21,13 @@
             controller: controller,
             controllerAs: 'vm',
             require: ['^'+parentModule, 'readingCircle'],
-            templateUrl: componentPath + 'template.html'
+            templateUrl: getTemplatePath()
         };
         
+        function getTemplatePath($scope){
+            return componentPath + 'template.html'
+        }
+
         return directive;
 
         function link(scope, element, attrs, controllers) {
@@ -135,7 +139,7 @@
                     radius1 = 190,
                     color = d3.scale.category20c();
 
-                var vis = d3.select("#chart").append("svg")
+                var vis = d3.select("#chart-"+$scope.key).append("svg")
                     .attr("width", width1)
                     .attr("height", height1)
                     .attr("pointer-events", "all")
@@ -211,7 +215,7 @@
                         .on("mouseout", mouseout);
 
 
-                    d3.select("#chart").on("mouseleave", mouseleave);
+                    d3.select("#chart-"+$scope.key).on("mouseleave", mouseleave);
 
                     var lastcolor = '';
                     var pieslice = g.append("svg:path")
@@ -245,7 +249,7 @@
                         var actionsrc = "sunburst_model"
                         var actiontype = "display_content"
                         var dialogText = '<h3>' + d.name + '</h3>';
-                        var bmc = '#basic-modal-content-2';
+                        var bmc = '#basic-modal-content-2-'+$scope.key;
                         var link = "";
                         var link2 = "";
                         var link3 = "";
@@ -377,7 +381,7 @@
                             $("#tip").html(d.name + ":<br/>" + d.title); // @@@@
                         }else{
                             var bookName = getBookName(d.bookid);
-                            $("#tip").html(bookName + ":<br/>" + d.name);
+                            $("#tip-"+$scope.key).html(bookName + ":<br/>" + d.name);
                         }
 
                         /* BEGIN iframe selection */
@@ -536,7 +540,7 @@
 
             function srRCSetLevelDisplayed(level) {
                 $scope.detail = level;
-                $("#chart-detail").val(level);
+                $("#chart-detail-"+$scope.key).val(level);
 
                 $("[class^=partition_depth_]").show();
                 $("[class^=partition_depth_0]").hide();
